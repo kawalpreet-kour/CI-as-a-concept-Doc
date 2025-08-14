@@ -30,87 +30,76 @@
 
 
 ## What is CI?
-Continuous Integration (CI) is a software development practice where developers frequently integrate code changes into a shared repository. Each integration is automatically verified through builds and tests to detect errors early.
+
+Continuous Integration (CI) has become an indispensable practice in modern software development, helping teams streamline their workflow, reduce bugs, and enhance overall project efficiency. CI involves the automation of various phases throughout the development lifecycle, ensuring that code changes are regularly integrated into a shared repository. CI enables early detection of issues and faster, reliable software delivery.
 
 ---
 
-## Why CI is Needed
+## Why Use CI?
 
 | Reason                          | Description                                                                 |
-|--------------------------------------|-----------------------------------------------------------------------------|
-| Detects integration issues early      | CI automatically runs builds and tests on every commit, catching issues quickly |
-| Reduces risk of software defects      | Frequent testing ensures bugs are identified and fixed before reaching production |
-| Improves collaboration among developers | Shared repository and automated feedback keep teams aligned                 |
-| Ensures code is always deployable     | Each integration is verified, so the codebase is always in a stable state   |
-| Speeds up release cycles and feedback loops | Rapid feedback enables faster iterations and delivery                        |
+|---------------------------------|-----------------------------------------------------------------------------|
+| Early Bug Detection             | Catch issues at an early stage to reduce cost and effort of fixes           |
+| Faster Feedback                 | Developers get quick insights on code quality and test results              |
+| Reliable Codebase               | Ensures that code in the main branch is always in a deployable state       |
+| Collaboration                   | Encourages team coordination and consistent coding practices               |
 
+---
 
 ## Key Components of CI
 
-| Component                  | Description                                      |
-|-----------------------------|---------------------------------------------------------------|
-| Source Code Repository      | Central location for storing and managing code (GitHub, GitLab, Bitbucket) |
-| CI/CD Tool / Build Server   | Automates build, test, and reporting processes (Jenkins, GitLab CI, Travis CI) |
-| Automated Testing           | Ensures code changes do not break existing functionality; unit, integration, and functional tests |
-| Notification System         | Alerts developers on build/test failures via email, Slack, or Teams |
-| Artifact Repository (Optional) | Stores built packages or deployable artifacts (Nexus, Artifactory) |
+| Component               | Description                                                                 | Recommended Tools                         |
+|-------------------------|-----------------------------------------------------------------------------|------------------------------------------|
+| Source Control           | Central repository for code and versioning                                 | Git, GitHub, GitLab, Bitbucket           |
+| CI Tool                  | Automates build, test, and integration                                     | Jenkins, GitLab CI/CD, GitHub Actions, CircleCI |
+| Build Automation         | Compile code and generate deployable artifacts                              | Maven, Gradle, npm, pip                  |
+| Testing                  | Unit, integration, functional, and security tests                           | JUnit, pytest, Selenium, OWASP ZAP       |
+| Reporting                | Logs, feedback, and dashboards to monitor CI pipeline                        | SonarQube, Jenkins Dashboard             |
 
 ---
 
-## CI Workflow
+## CI Workflow – Steps
 
-| Step                        | Description                                                                 |
-|-----------------------------|-----------------------------------------------------------------------------|
-| Code Commit                 | Developer commits code to the central/shared repository                    |
-| Trigger CI Pipeline         | CI server detects the code change and starts the automated pipeline        |
-| Build Process               | Code is compiled and packaged with dependencies                            |
-| Automated Testing           | Unit, integration, and functional tests run automatically                  |
-| Feedback & Reporting        | CI server notifies developers about build/test success or failures         |
-| Artifact Creation           | Build produces a deployable artifact (e.g., compiled code or Docker image) |
-| Deployment (Optional / CD)  | Artifact can be deployed to staging/production (part of CD, not pure CI)   |
-
-<div align="center">
-  <img width="250" height="650" alt="Untitled diagram" src="https://github.com/user-attachments/assets/6fe77b05-180c-45f4-b30f-f9691e6d3a8c" />
-</div>
-
-### Notes
-
-- **Trigger CI Pipeline**: This is where the CI server follows the **pipeline plan/configuration** (e.g., Jenkinsfile, .gitlab-ci.yml) to execute build, test, and artifact steps automatically.  
-- **Deployment**: Deployment is **not part of CI itself**, but it is shown as optional to indicate how CI fits into the **broader CI/CD pipeline**.
-
+| Phase / Step            | Description                                                                 | Recommended Tools                         |
+|-------------------------|-----------------------------------------------------------------------------|------------------------------------------|
+| Start – Developer Push  | Developer writes code, commits locally, and pushes to central repo          | Git, GitHub, GitLab, Bitbucket           |
+| CI Trigger              | Pipeline starts automatically or manually                                    | Jenkins, GitHub Actions, GitLab CI/CD, CircleCI |
+| Pre-Build Phase         | Compile code, credential scan, dependency & license check, static analysis, code coverage | javac, GCC, SonarQube, TruffleHog, GitLeaks, JaCoCo, Snyk |
+| Build Phase             | Dependency resolution, artifact generation, unit testing, code quality checks | Maven, Gradle, Docker, JUnit, ESLint    |
+| Post-Build Phase        | Health check, sanity test, functional test, integration test, DAST          | Selenium, Cypress, Postman, OWASP ZAP   |
+| Decision Point          | All checks passed? Yes → Deploy, No → Feedback & Fix                         | CI tool logs, Jenkins, GitHub Actions, GitLab CI/CD |
+| Deployment              | Deploy artifact to staging or production                                    | Docker, Kubernetes, AWS, Azure, GCP     |
 
 ---
 
 ## Benefits of CI
 
-| Benefit                     | Description                                               |
-|-------------------------------|----------------------------------------------------------|
-| Early Detection of Bugs       | Problems are caught quickly                               |
-| Reduced Integration Risk      | Frequent integration minimizes conflicts                 |
-| Improved Code Quality         | Automated tests enforce standards                        |
-| Faster Release Cycles         | Supports Agile/DevOps efficiency                         |
-| Better Team Collaboration     | Transparent workflows among team members                |
+| Benefit                        | Description                                                                 |
+|--------------------------------|-----------------------------------------------------------------------------|
+| Reduced Integration Risk       | Frequent integration reduces large conflicts                                |
+| Faster Delivery                 | Automated processes speed up deployment                                     |
+| Higher Code Quality             | Consistent checks and tests improve reliability                             |
+| Transparency                    | Team can track build status, test coverage, and errors                     |
 
 ---
 
 ## Best Practices
 
-| Best Practice                 |  Description                                     |
-|-------------------------------|---------------------------------------------------------|
-| Commit code frequently        | Helps detect issues early                               |
-| Automate all tests            | Ensures code correctness                                 |
-| Keep builds fast              | Reduces developer waiting time                           |
-| Maintain a single repository  | Avoids conflicts and simplifies CI setup                |
-| Immediate feedback            | Developers can act quickly on failures                  |
-| Use feature branches          | Organizes work and simplifies merging                   |
-| Document build/test process   | Maintains clarity and reproducibility                    |
-
----
-## 7. Conclusion
-Continuous Integration is a critical practice in modern software development. By integrating code frequently, automating tests, and providing rapid feedback, CI ensures high-quality software delivery, reduces risks, and supports Agile and DevOps methodologies.
+| Practice                        | Description                                                                 |
+|---------------------------------|-----------------------------------------------------------------------------|
+| Commit Frequently               | Small, incremental changes are easier to manage                             |
+| Automate Everything             | Builds, tests, and deployments should be automated                          |
+| Keep Build Fast                  | Optimize pipeline to give quick feedback                                    |
+| Monitor & Alert                  | Set up notifications for failures or quality issues                         |
+| Maintain Test Coverage           | Ensure automated tests cover as much code as possible                        |
 
 ---
 
+## Conclusion
+
+Continuous Integration (CI) fosters collaboration, early issue detection, and reliable code deployment. Embracing CI principles ensures that software evolves seamlessly, enabling teams to deliver high-quality software efficiently and confidently.
+
+---
 ## Contact Information
 
 | Name             | Email                          |
