@@ -6,22 +6,22 @@
 ## Author Information
 | Last Updated On | Version | Author           | Level           | Reviewer               |
 |-----------------|---------|------------------|-----------------|------------------------|
-| 14-08-2025      | V1.0    | Kawalpreet Kour  | Internal Review | Pritam                 |
+| 14-08-2025      | V1.1    | Kawalpreet Kour  | Internal Review | Pritam                 |
 |                 |         | Kawalpreet Kour  | L0              | Shreya/Sharvari        |
 |                 |         | Kawalpreet Kour  | L1              | Abhishek V             |
 |                 |         | Kawalpreet Kour  | L2              | Abhishek Dubey/Rishabh sharma |
 
 ---
 <details>
-  <summary><H2><strong>Table of Contents</strong></H2></summary>
+  <summary><h2><strong>Table of Contents</strong></h2></summary>
 
 - [What is CI?](#what-is-ci)
-- [Why CI is Needed](#why-ci-is-needed)
+- [Why Use CI?](#why-use-ci)
 - [Key Components of CI](#key-components-of-ci)
 - [CI Workflow](#ci-workflow)
 - [Benefits of CI](#benefits-of-ci)
 - [Best Practices](#best-practices)
-- [Conclusion](#7-conclusion)
+- [Conclusion](#conclusion)
 - [Contact Information](#contact-information)
 - [References](#references)
 
@@ -58,7 +58,7 @@ Continuous Integration (CI) has become an indispensable practice in modern softw
 
 ---
 
-## CI Workflow – Steps
+## CI Workflow
 
 | Phase / Step            | Description                                                                 | Recommended Tools                         |
 |-------------------------|-----------------------------------------------------------------------------|------------------------------------------|
@@ -67,8 +67,15 @@ Continuous Integration (CI) has become an indispensable practice in modern softw
 | Pre-Build Phase         | Compile code, credential scan, dependency & license check, static analysis, code coverage | javac, GCC, SonarQube, TruffleHog, GitLeaks, JaCoCo, Snyk |
 | Build Phase             | Dependency resolution, artifact generation, unit testing, code quality checks | Maven, Gradle, Docker, JUnit, ESLint    |
 | Post-Build Phase        | Health check, sanity test, functional test, integration test, DAST          | Selenium, Cypress, Postman, OWASP ZAP   |
-| Decision Point          | All checks passed? Yes → Deploy, No → Feedback & Fix                         | CI tool logs, Jenkins, GitHub Actions, GitLab CI/CD |
-| Deployment              | Deploy artifact to staging or production                                    | Docker, Kubernetes, AWS, Azure, GCP     |
+| Decision Point          | All checks passed? Yes → Deploy, No → Feedback, Fix & Notify team           | Jenkins, GitHub Actions, GitLab CI/CD, Slack, Email |
+| Deployment              | Deploy artifact to staging or production                                    | AWS, Docker, Kubernetes,  Azure    |
+| Monitoring & Alerts     | Track build/deploy status, performance metrics, send notifications on failure or success | Slack, Email, Teams, Grafana, Prometheus |
+
+
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/345bcbd0-47f2-46f3-90e2-479b6885f11d" width="413" height="648" alt="CI Diagram" />
+</div>
+
 
 ---
 
@@ -110,11 +117,11 @@ Continuous Integration (CI) fosters collaboration, early issue detection, and re
 
 ## References
 
-| Description                     | Link                                                                                          |
-|---------------------------------|-----------------------------------------------------------------------------------------------|
-| GitLab CI/CD Documentation       | [https://docs.gitlab.com/ee/ci/](https://docs.gitlab.com/ee/ci/)                             |
-| Atlassian CI/CD Guide            | [https://www.atlassian.com/continuous-delivery/ci-vs-ci-vs-cd](https://www.atlassian.com/continuous-delivery/continuous-integration) |
-| Jenkins Documentation            | [https://www.jenkins.io/doc/](https://www.jenkins.io/doc/)                                   |
+| Description                  | Link                                                                                          |
+|-------------------------------|-----------------------------------------------------------------------------------------------|
+| GitLab CI/CD Documentation    | [https://docs.gitlab.com/ee/ci/](https://docs.gitlab.com/ee/ci/)                             |
+| Atlassian CI/CD Guide         | [https://www.atlassian.com/continuous-delivery/continuous-integration](https://www.atlassian.com/continuous-delivery/continuous-integration) |
+| CI as a Concept               | [https://medium.com/@c-shantanu/ci-as-a-concept-4c7eddcd8a6d](https://medium.com/@c-shantanu/ci-as-a-concept-4c7eddcd8a6d) |
 
 
 
